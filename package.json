@@ -2,8 +2,10 @@
   "name": "pwpc-1",
   "version": "0.0.1",
   "description": "primer proyecto pila completa 1",
-  "main": "hello.js",
+  "main": "index.js",
   "scripts": {
+    "start": "node index",
+    "dev": "set enviroment=DEVLOPMENT  && node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +21,6 @@
   "bugs": {
     "url": "https://github.com/caugustocc/borrar-26-10-2021/issues"
   },
-  "homepage": "https://github.com/caugustocc/borrar-26-10-2021#readme"
+  "homepage": "https://github.com/caugustocc/borrar-26-10-2021#readme",
+  "type":"module" 
 }
