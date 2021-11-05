@@ -9,8 +9,16 @@ import http from 'http';
 //Arrow function, funsio declaretion
 const server = http.createServer((req, res)=>{
     console.log("se ha recibido una peticion")
+    //consola
+    console.log(`URL:  ${req.url}`);
+    console.log(`Rques Method: ${req.method}`)
+    //tipo de contenido
+    res.setHeader("Content-type", "text/html")
     //repuesta
-    res.write("wiiii");
+    res.write("<html>");
+    res.write("<head><title>My App</title></head>");
+    res.write(`<Body><h1>Mi sitio web 1</h1><br><p>Recurso Solucitdado: ${req.url}</p> </Body>`);
+    res.write("</html>");
     //terminamos la conexion
     res.end();
 });
