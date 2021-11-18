@@ -1,5 +1,6 @@
 //1. importando modulo http
 import http from "http";
+import Fs from "fs";
 
 //2. crear servidor
 //cb (callBAck) es una funcion que se ejecuta ante cualquier peticion de nuestro Server
@@ -9,7 +10,7 @@ import http from "http";
 //Arrow function, funsio declaretion
 const server = http.createServer((req, res) => {
   let { url, method } = req;
-  console.log(`Se ha solicitado el siguiente recurso: ${method} : ${req}`);
+  console.log(`Se ha solicitado el siguiente recurso: ${method} : ${url}`);
   //filtrar url
   //ruta por defecto
   if (url === "/") {
@@ -32,34 +33,28 @@ const server = http.createServer((req, res) => {
         `);
     res.end();
   }
-   if (url === "/message" && method === "POST") {
+   else if (url === "/message" && method === "POST") {
     //1. Se crea una variable para guardar todos los datos de entrada
     let body =[];
     //2. Registar un manejador para la entrada de datos
     req.on("data", (chunk)=>{
         //2.1 Registrando los trozos que llegan al backen o server
-        console.log(chunk);
+        console.log(`${chunk}`);
         //2.2 Acomulamos los datos de entrada
         body.push(chunk);
         //2.3 Proteccion en casi de recepcion masiva de datos
         if(body.length> 1e6) req.socket.destroy();
-    });
+    }); 
     //3. reigistrando un manejador de fin de recepcion de datos
     req.on(`end`,()=>{
         const parseBOdy = Buffer.concat(body).toString();
         const message = parseBOdy.split('=')[1];
-        res.setHeader("Content-type", "text/html");
-        res.write(`
-        <html>
-            <head>
-                <title> Received Menssage</title>
-            </head>
-         <body>
-             <h1>Mensaje recibido</h1>
-             <p> Gracias !!!... </p>
-             <p>Su mensaje es: ${message}</p>
-        </body>
-        </html>`);
+        //guardando el mensaje en ur archivo
+        Fs.writeFileSync(`message.txt`, message);
+        //Establecer el status code de redireccionamiento
+        res.statusCode = 302;
+        // Establecer la ruta de direcciones
+        res.setHeader(`Location`,`/`);
         //Finalizo la coneccion
         return res.end();
     });

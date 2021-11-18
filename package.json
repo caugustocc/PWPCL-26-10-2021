@@ -4,8 +4,8 @@
   "description": "primer proyecto pila completa 1",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "dev": "set enviroment=DEVLOPMENT  && node index",
+    "start": "echo \"Iniciando...\" && node index",
+    "dev": "set enviroment=DEVELOPMENT  && nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +22,8 @@
     "url": "https://github.com/caugustocc/borrar-26-10-2021/issues"
   },
   "homepage": "https://github.com/caugustocc/borrar-26-10-2021#readme",
-  "type":"module" 
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
