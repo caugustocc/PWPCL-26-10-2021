@@ -14,7 +14,7 @@ app.use(`/about`,(_,res)=>{
   console.log(`👀 se realizo la peticion: "/about"`)
   res.send("<h1> Mi APP </h1>\n 🎯 Sitio con NodeJs")
 })
-app.use(`/`,(_, res)=>{
+app.use([`/`,`/home`],(_, res)=>{
   console.log('📍 Estoy en el middleware 3: "/"');
   console.log("📌Emitiendo respuesta al cliente");
   res.send(`<h1>MI Respuesta</h1>\n ✨ 🎯Bienvenidos al sitio WEB`)
