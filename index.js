@@ -7,7 +7,7 @@ import  Express  from "express";
 
 //creae una instancia de Express
 const app = Express(); 
-
+console.log(`variable de entorno ${process.env.NODE_ENV || "No establecido"}`)
 //insertando middleware para
 //la lectura de datos desde el cliente
 app.use(Express.urlencoded({extended: false}));
