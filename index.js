@@ -39,7 +39,7 @@ app.use(`/add-student-form`,(req, res, next)=>{
 })
 
 //ruta que procesa el formulario
-app.use('/add-student',(req, res, next)=>{
+app.post('/add-student',(req, res, next)=>{
   for(const prop in req.body){
     console.log(`👉 ${prop}: ${req.body[prop]}`);
   }
