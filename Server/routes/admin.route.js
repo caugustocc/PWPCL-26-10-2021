@@ -1,6 +1,6 @@
 //1 importando enrutador de express
 import { Router } from "express";
-// 2 crear una instancoa del enrutador
+// 2 crear una instancias del enrutador
 const router = Router();
 //3. Registrar rutas a mi enrutador
 //router.<vervo>(<sub-ruta>,<request handler>);

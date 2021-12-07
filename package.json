@@ -2,7 +2,7 @@
   "name": "pwpc-1",
   "version": "0.0.1",
   "description": "primer proyecto pila completa 1",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "start": "cross-env echo \"Iniciando...\" && NODE_ENV=production node Server/main.js",
     "dev": "cross-env NODE_ENV=development nodemon Server/main.js",

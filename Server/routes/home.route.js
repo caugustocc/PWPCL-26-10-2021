@@ -1,12 +1,14 @@
 //1 importando enrutador de express
 import { Router } from "express";
+//import module Path
+import path from 'path';
 const home = Router();
 // rutas 
-home.use(`/about`,(_,res)=>{ 
+home.get(`/about`,(_,res)=>{ 
     res.send("<h1> Mi APP </h1>\n 🎯 Sitio con NodeJs")
   });
-  home.use([`/`,`/home`],(_, res)=>{
-    console.log("📌Emitiendo respuesta al cliente");
-    res.send(`<h1>MI Respuesta</h1>\n ✨ 🎯Bienvenidos al sitio WEB`)
+  home.get([`/`,`/home`],(_, res)=>{
+    const filePath = path.join(path.resolve(),"server","views","shop.html")
+    res.sendFile(filePath)
   });
   export default home;
