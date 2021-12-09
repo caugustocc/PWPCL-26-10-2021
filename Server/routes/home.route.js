@@ -11,4 +11,5 @@ home.get(`/about`,(_,res)=>{
     const filePath = path.join(path.resolve(),"server","views","shop.html")
     res.sendFile(filePath)
   });
+
   export default home;
