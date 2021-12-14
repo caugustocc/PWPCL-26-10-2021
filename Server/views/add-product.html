@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/addProduct.css">
     <title>Add Product</title>
 </head>
 <body>
-    <head>
-        <nav>
-            <u>
-                <li><a href="/">🛒Tienda</a></li>
-                <li><a href="/add-poduct">➕ Agregar Producto</a></li>
-            </u>
+    <header class="main-heder">
+        <nav class="main-heder-nav">
+            <ul class="main-heder-item-list">
+                <li class="main-heder-item"><a href="/">🛒Tienda</a></li>
+                <li class="main-heder-item"><a class="active" href="/admin/add-product">➕ Agregar Producto</a></li>
+            </ul>
         </nav>
-    </head>
+    </header>
     <main>
-        <form action="add-product" method="POST">
+        <form class="product-from" action="add-product" method="POST">
             <label for= "product-name"> ☕ Nombre del poducto </label>
             <input type= "text" name= "name" id="product-name">
             <button type="submit">☕ Add Product</button>

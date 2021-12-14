@@ -2,15 +2,16 @@
 // Importando express
 import  Express  from "express";
 import path from "path";
+import {ROOT_DIR} from "./helpers/path.helper.js";
 //importar enrutadores
-import adminRoute from './routes/admin.route.js';
-
+import {router as adminRoute} from './routes/admin.route.js';
 //importando homeroute.js
 import homeRoute from "./routes/home.route.js";
 
+console.log(`variable de entorno ${process.env.NODE_ENV || "No establecido"}`)
 //creae una instancia de Express
 const app = Express(); 
-console.log(`variable de entorno ${process.env.NODE_ENV || "No establecido"}`)
+
 //insertando middleware para
 //la lectura de datos desde el cliente
 app.use(Express.urlencoded({extended: false}));
@@ -25,12 +26,15 @@ app.use((req,_, next)=>{
   console.log(`Peticion realizada: "${req.method} : ${req.path}"`);
   next();
 });
+//Registando el middleware que maneja el servicio de archivos estaticos
+app.use(Express.static(path.join(ROOT_DIR,'public')));
+
 //Se agrega a la aplicacion la ruta admin
 app.use('/admin',adminRoute);
 app.use(homeRoute);
 // Respuesta 404
-app.use((req, res, next)=>{
-  const fPath = path.join(path.resolve(),"server","views","404.html")
+app.use((_, res, next)=>{
+  const fPath = path.join(ROOT_DIR,"server","views","404.html")
   res.sendFile(fPath)
 });
 
