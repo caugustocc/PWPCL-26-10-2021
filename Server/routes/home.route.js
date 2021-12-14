@@ -14,8 +14,9 @@ home.get(`/about`,(_,res)=>{
   });
   home.get([`/`,`/home`],(_, res)=>{
     console.log(`☕Inventario de productos ${JSON.stringify(products)}`)
-    const filePath = path.join(ROOT_DIR,"server","views","shop.html")
-    res.sendFile(filePath)
+    console.log(`sirviendo recursos: 'shop.html'`)
+    res.render('shop')
+  
   });
 
   export default home;
